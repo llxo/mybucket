@@ -7,6 +7,7 @@
 1. 交流对话过程中，所有思考、分析、解释和回答必须使用简体中文。
 2. Skills 优先：优先使用 Skills 驱动问题处理。
 3. 回答关于配置、执行优先级、超时等待、工具行为的问题时，优先引用真实代码位置，例如 `file#method:line`。
+4. 查询 GitHub 仓库、Release、资产和元数据时，优先使用 `gh` 命令；仅在 `gh` 不可用或信息不足时再使用其他网络请求方式。
 
 ### 工程原则
 
@@ -24,7 +25,7 @@
 
 这是一个 Scoop bucket 仓库。
 
-- Manifest 放在 `bucket/` 目录，文件名使用小写短横线或项目常用小写名称。
+- Manifest 放在 `bucket/` 目录，文件名、app 名称和安装示例一律使用全小写；名称中的空格使用 `-` 替代，例如使用 `eaappemulater`，不要使用 `EAappEmulater`，避免生成 `apps\\EAappEmulater` 这类混合大小写目录。
 - Manifest 必须是合法 JSON，新增或修改后至少用 `ConvertFrom-Json` 校验。
 - 不需要命令行入口时，不要添加 `bin` 字段，避免 Scoop 生成 shim。
 - GUI 程序优先使用 `shortcuts` 创建开始菜单快捷方式。
