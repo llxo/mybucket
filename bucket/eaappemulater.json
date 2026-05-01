@@ -1,0 +1,26 @@
+{
+  "version": "1.9.1.2",
+  "description": "EA app emulator and lightweight EA Desktop/Origin replacement.",
+  "homepage": "https://github.com/CrazyZhang666/EAappEmulater",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/CrazyZhang666/EAappEmulater/releases/download/1.9.1.2/EADesktop.exe",
+      "hash": "4d0efd69ecf2325ace1fb20c236955e3cd52bc334cb573d5212cfb2a54a534fc"
+    }
+  },
+  "shortcuts": [
+    [
+      "EADesktop.exe",
+      "EAappEmulater"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/CrazyZhang666/EAappEmulater/releases/download/$version/EADesktop.exe"
+      }
+    }
+  }
+}
