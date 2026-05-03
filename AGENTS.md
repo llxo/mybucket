@@ -25,7 +25,7 @@
 
 这是一个 Scoop bucket 仓库。
 
-- Manifest 放在 `bucket/` 目录，文件名、app 名称和安装示例一律使用全小写；名称中的空格使用 `-` 替代，例如使用 `eaappemulater`，不要使用 `EAappEmulater`，避免生成 `apps\\EAappEmulater` 这类混合大小写目录。
+- Manifest 放在 `bucket/` 目录，文件名、app 名称和安装示例一律使用全小写；名称中的空格使用 `-` 替代
 - Manifest 必须是合法 JSON，新增或修改后至少用 `ConvertFrom-Json` 校验。
 - 不需要命令行入口时，不要添加 `bin` 字段，避免 Scoop 生成 shim。
 - GUI 程序优先使用 `shortcuts` 创建开始菜单快捷方式。
