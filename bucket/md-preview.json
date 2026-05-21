@@ -1,12 +1,12 @@
 {
-  "version": "1.0.3",
+  "version": "1.1.1",
   "description": "Ultra-lightweight cross-platform Markdown preview app built with Rust and native WebView.",
   "homepage": "https://github.com/vorojar/md-preview",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/vorojar/md-preview/releases/download/v1.0.3/MD-Preview-windows-x64.zip",
-      "hash": "9f60bfcba73b2b8a6dc65590692f70d82337f7f21c4aad59984ec8f6669de8dd"
+      "url": "https://github.com/vorojar/md-preview/releases/download/v1.1.1/MD-Preview-windows-x64.zip",
+      "hash": "2d291bb49307fb09fce365037205b6c5bda455146a6bcf39adbe8dcd4bc3719d"
     }
   },
   "shortcuts": [
