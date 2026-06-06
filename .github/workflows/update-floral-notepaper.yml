@@ -1,0 +1,87 @@
+name: Update floral-notepaper manifest
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7 3 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update-floral-notepaper:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout bucket
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update manifest from latest release
+        id: update
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+
+          $manifestPath = 'bucket/floral-notepaper.json'
+          $repo = 'Achilng/floral-notepaper'
+
+          # 核心流程：读取最新 release，选择 Windows 便携 exe，并回写版本、下载地址和 SHA256。
+          $headers = @{
+            Accept = 'application/vnd.github+json'
+            'X-GitHub-Api-Version' = '2022-11-28'
+          }
+          if ($env:GITHUB_TOKEN) {
+            $headers.Authorization = "Bearer $env:GITHUB_TOKEN"
+          }
+
+          $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases/latest" -Headers $headers
+          $version = $release.tag_name -replace '^v', ''
+          $assetName = "floral-notepaper_$version.exe"
+          $asset = $release.assets | Where-Object { $_.name -eq $assetName } | Select-Object -First 1
+          if (-not $asset) {
+            throw "Release '$($release.tag_name)' does not contain asset '$assetName'."
+          }
+
+          $downloadUrl = $asset.browser_download_url
+          $url = "$downloadUrl#/floral-notepaper.exe"
+          $hash = $null
+
+          if ($asset.digest -and $asset.digest -match '^sha256:(.+)$') {
+            $hash = $Matches[1].ToLowerInvariant()
+          } else {
+            # 兜底：没有可用 digest 时下载资产并本地计算 SHA256。
+            $downloadPath = Join-Path $env:RUNNER_TEMP $assetName
+            Invoke-WebRequest -Uri $downloadUrl -OutFile $downloadPath
+            $hash = (Get-FileHash -Algorithm SHA256 -Path $downloadPath).Hash.ToLowerInvariant()
+          }
+
+          $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
+          $oldJson = $manifest | ConvertTo-Json -Depth 20
+
+          $manifest.version = $version
+          $manifest.architecture.'64bit'.url = $url
+          $manifest.architecture.'64bit'.hash = $hash
+
+          $newJson = $manifest | ConvertTo-Json -Depth 20
+          if ($newJson -ne $oldJson) {
+            Set-Content -Path $manifestPath -Value ($newJson + "`n") -Encoding utf8
+            "changed=true" >> $env:GITHUB_OUTPUT
+            "version=$version" >> $env:GITHUB_OUTPUT
+          } else {
+            "changed=false" >> $env:GITHUB_OUTPUT
+            "version=$version" >> $env:GITHUB_OUTPUT
+          }
+
+      - name: Commit updated manifest
+        if: steps.update.outputs.changed == 'true'
+        shell: pwsh
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add bucket/floral-notepaper.json
+          git commit -m "floral-notepaper: Update to version ${{ steps.update.outputs.version }}"
+          git push
