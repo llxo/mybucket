@@ -1,12 +1,12 @@
 {
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Lightweight cross-platform desktop sticky note tool with Markdown editing and preview.",
   "homepage": "https://github.com/Achilng/floral-notepaper",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/Achilng/floral-notepaper/releases/download/v1.0.4/floral-notepaper_1.0.4.exe#/floral-notepaper.exe",
-      "hash": "e87325986161508eca5c26d515d5bf6291fd9332a5d358214a62c46a3efc86c0"
+      "url": "https://github.com/Achilng/floral-notepaper/releases/download/v1.1.0/floral-notepaper_1.1.0.exe#/floral-notepaper.exe",
+      "hash": "88efadda2f0b048ee47b2528072255a38379ec0aeb768bbc6f71128adf7d7e3f"
     }
   },
   "shortcuts": [
@@ -24,3 +24,4 @@
     }
   }
 }
+
