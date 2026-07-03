@@ -23,6 +23,7 @@ scoop install md-preview
 scoop install eaappemulater
 scoop install tiez-clipboard
 scoop install floral-notepaper
+scoop install netcatty
 ```
 
 ## 已收录应用
@@ -33,6 +34,7 @@ scoop install floral-notepaper
 | `eaappemulater` | EA app 模拟器和轻量级 EA Desktop/Origin 替代工具。 | <https://github.com/CrazyZhang666/EAappEmulater> |
 | `tiez-clipboard` | 跨平台剪贴板管理器，支持历史、标签、同步和隐私保护。 | <https://github.com/jimuzhe/tiez-clipboard> |
 | `floral-notepaper` | 轻量优雅的桌面便签工具，支持 Markdown 编辑与预览。 | <https://github.com/Achilng/floral-notepaper> |
+| `netcatty` | 现代跨平台 netcat 替代工具，具备增强的网络调试和数据传输功能。 | <https://github.com/binaricat/Netcatty> |
 
 ## 常用命令
 
