@@ -1,4 +1,4 @@
-# AGENTS.md
+# CLAUDE.md
 
 ## 全局共享规范
 
@@ -29,8 +29,17 @@
 - Manifest 必须是合法 JSON，新增或修改后至少用 `ConvertFrom-Json` 校验。
 - 不需要命令行入口时，不要添加 `bin` 字段，避免 Scoop 生成 shim。
 - GUI 程序优先使用 `shortcuts` 创建开始菜单快捷方式。
-- GitHub Release 项目优先配置 `checkver: "github"` 和 `autoupdate`。
-- 自动更新 workflow 放在 `.github/workflows/`，核心流程需要简体中文注释。
+- GitHub Release 项目必须配置 `checkver: "github"` 和 `autoupdate`。
+
+## 自动更新机制
+
+本仓库使用 Scoop 官方 [GithubActions](https://github.com/ScoopInstaller/GithubActions) 实现自动化：
+
+- **Excavator** (`.github/workflows/schedule.yml`) - 每 30 分钟自动检查所有清单的新版本并提交更新
+- **Issue Handler** - 自动处理 hash 校验失败、下载失败等问题
+- **PR Validator** - 自动验证 PR 中的清单格式、hash、checkver 和 autoupdate 功能
+
+新增清单无需单独编写 workflow，只需在清单中正确配置 `checkver` 和 `autoupdate` 字段。
 
 ## 危险操作确认机制
 
