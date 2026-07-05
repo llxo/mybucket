@@ -1,27 +1,26 @@
 {
-  "version": "1.1.24",
-  "description": "Ultra-lightweight cross-platform Markdown preview app built with Rust and native WebView.",
-  "homepage": "https://github.com/vorojar/md-preview",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/vorojar/md-preview/releases/download/v1.1.24/MD-Preview-windows-x64.exe#/md-preview.exe",
-      "hash": "6b91ae5794b3e29d9e1d5a3ac54910f39b0475c6b7cd04d0f659b0df668630c7"
-    }
-  },
-  "shortcuts": [
-    [
-      "md-preview.exe",
-      "MD Preview"
-    ]
-  ],
-  "checkver": "github",
-  "autoupdate": {
+    "version": "1.1.25",
+    "description": "Ultra-lightweight cross-platform Markdown preview app built with Rust and native WebView.",
+    "homepage": "https://github.com/vorojar/md-preview",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/vorojar/md-preview/releases/download/v$version/MD-Preview-windows-x64.exe#/md-preview.exe"
-      }
+        "64bit": {
+            "url": "https://github.com/vorojar/md-preview/releases/download/v1.1.25/MD-Preview-windows-x64.exe#/md-preview.exe",
+            "hash": "75f3ab5bfa91ca564cc5dbae13786ea4abec25243918ed5580c6503ebea83450"
+        }
+    },
+    "shortcuts": [
+        [
+            "md-preview.exe",
+            "MD Preview"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vorojar/md-preview/releases/download/v$version/MD-Preview-windows-x64.exe#/md-preview.exe"
+            }
+        }
     }
-  }
 }
-
