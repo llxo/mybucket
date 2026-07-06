@@ -1,12 +1,12 @@
 {
-    "version": "1.1.58",
+    "version": "1.1.59",
     "description": "Modern, cross-platform netcat alternative with enhanced features for network debugging and data transfer.",
     "homepage": "https://github.com/binaricat/Netcatty",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/binaricat/Netcatty/releases/download/v1.1.58/Netcatty-1.1.58-portable-win-x64.exe#/netcatty.exe",
-            "hash": "169efc3ae538ab16aa68fe39f148ef0d5698aa3c51a6b6e3ace9d70bb67d42c5"
+            "url": "https://github.com/binaricat/Netcatty/releases/download/v1.1.59/Netcatty-1.1.59-portable-win-x64.exe#/netcatty.exe",
+            "hash": "1a8bfd2e40bc2c737a76f76935cda8a670433baf603bb6c76b518f5167413899"
         }
     },
     "shortcuts": [
